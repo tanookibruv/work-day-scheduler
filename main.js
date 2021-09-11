@@ -6,19 +6,17 @@ currentDayEl.innerHTML = today;
 //Variable to grab time by the hour for daily planner
 var hourTime = moment().format('h A');
 
-var text = [];
-$('.hour').each(function() {
-    text[text.length]=$(this).text();
-});
-console.log
-
 function pastTime() {
-    var pastRow = document.querySelectorAll('.hour')[0].innerHTML;
-    var rowEl = document.querySelectorAll('.row');
-    if (pastRow <= hourTime) {
-        rowEl.className += " past"
-    }
-    console.log(pastRow, hourTime)
+    var hourEls = document.querySelectorAll('.hour');
+    var rowEl = document.querySelectorAll('.row')
+    hourEls.forEach(element => {
+        element.textContent;
+        
+        if (element <= hourTime) {
+            rowEl.classList.add("past")
+        }
+        console.log(element.parentNode)
+    });
 }
 
 window.onload = pastTime();
