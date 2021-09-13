@@ -11,8 +11,19 @@ var hourEls = document.querySelectorAll('.hour');
 var pastEl = document.querySelectorAll('.past');
 var presentEl = document.querySelectorAll('.present');
 var futureEl = document.querySelectorAll('.future');
-var textEl = document.querySelectorAll('.mytext')
-var saveEl = document.querySelectorAll('.saveBtn')
+var textEl = document.getElementsByTagName('textarea');
+var saveEl = document.getElementsByClassName('saveBtn');
+
+
+//for loop for multiple button usage and textarea usage.
+for (var i =0; i < saveEl.length; i++) {
+    saveEl[i].addEventListener("click", saveTask)
+};
+
+for (let j = 0; j < textEl.length; j++) {
+    console.log(textEl[j])
+    
+}
 
 
 
@@ -40,10 +51,20 @@ function matchTime() {
     });
 };
 
+function renderTask() {
+    var savedtoDo = JSON.parse(localStorage.getItem("toDo"));
+    console.log(savedtoDo)
+    textEl.innerHTML = savedtoDo;
+}
+
+function saveTask() {
+    var toDo = textEl.value;
+    localStorage.setItem("toDo", JSON.stringify(toDo));
+    renderTask();
+}
 
 
-
-
-
+window.onload = renderTask();
 window.onload = matchTime();
 
+saveEl.onclick = saveTask
