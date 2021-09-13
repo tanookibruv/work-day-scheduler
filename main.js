@@ -21,9 +21,9 @@ for (var i =0; i < saveEl.length; i++) {
 };
 
 for (let j = 0; j < textEl.length; j++) {
+    textEl[j]
     console.log(textEl[j])
-    
-}
+};
 
 
 
@@ -54,11 +54,11 @@ function matchTime() {
 function renderTask() {
     var savedtoDo = JSON.parse(localStorage.getItem("toDo"));
     console.log(savedtoDo)
-    textEl.innerHTML = savedtoDo;
+    textEl[1].innerHTML = savedtoDo;
 }
 
 function saveTask() {
-    var toDo = textEl.value;
+    var toDo = textEl[1].value;
     localStorage.setItem("toDo", JSON.stringify(toDo));
     renderTask();
 }
@@ -66,5 +66,3 @@ function saveTask() {
 
 window.onload = renderTask();
 window.onload = matchTime();
-
-saveEl.onclick = saveTask
