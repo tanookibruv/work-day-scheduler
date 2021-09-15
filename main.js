@@ -20,11 +20,6 @@ for (var i =0; i < saveEl.length; i++) {
     saveEl[i].addEventListener("click", saveTask)
 };
 
-for (let j = 0; j < textEl.length; j++) {
-    textEl[j]
-    console.log(textEl[j])
-};
-
 
 
 // function to compare current time to daily planner
@@ -54,11 +49,13 @@ function matchTime() {
 function renderTask() {
     var savedtoDo = JSON.parse(localStorage.getItem("toDo"));
     console.log(savedtoDo)
-    textEl[1].innerHTML = savedtoDo;
+    savedtoDo;
 }
 
-function saveTask() {
-    var toDo = textEl[1].value;
+
+function saveTask(e) {
+    var toDo = document.getElementById("input-" + e.target.id);
+    console.log(toDo.value)
     localStorage.setItem("toDo", JSON.stringify(toDo));
     renderTask();
 }
