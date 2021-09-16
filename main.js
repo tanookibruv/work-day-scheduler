@@ -14,12 +14,10 @@ var futureEl = document.querySelectorAll('.future');
 var textEl = document.getElementsByTagName('textarea');
 var saveEl = document.getElementsByClassName('saveBtn');
 
-
 //for loop for multiple button usage and textarea usage.
 for (var i =0; i < saveEl.length; i++) {
     saveEl[i].addEventListener("click", saveTask)
 };
-
 
 
 // function to compare current time to daily planner
@@ -46,18 +44,17 @@ function matchTime() {
     });
 };
 
-function renderTask() {
-    var savedtoDo = JSON.parse(localStorage.getItem("toDo"));
-    console.log(savedtoDo)
-    savedtoDo;
+function saveTask(e) {
+    var toDo = document.getElementById("input-" + e.target.id).value;
+    localStorage.setItem("toDo" + e.target.id, JSON.stringify(toDo));
+
+    // console.log(localStorage.getItem("toDo" + e.target.id))
 }
 
-
-function saveTask(e) {
-    var toDo = document.getElementById("input-" + e.target.id);
-    console.log(toDo.value)
-    localStorage.setItem("toDo", JSON.stringify(toDo));
-    renderTask();
+function renderTask() {
+    for (var i =0; i < localStorage.length; i++) {
+        $("textarea").append(localStorage.getItem(localStorage.key(i)))
+    };
 }
 
 
