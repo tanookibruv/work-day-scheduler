@@ -48,15 +48,11 @@ function saveTask(e) {
     var toDo = document.getElementById("input-" + e.target.id).value;
     localStorage.setItem("toDo" + e.target.id, JSON.stringify(toDo));
 
-    // console.log(localStorage.getItem("toDo" + e.target.id))
-}
-
-function renderTask() {
-    for (var i =0; i < localStorage.length; i++) {
-        $("textarea").append(localStorage.getItem(localStorage.key(i)))
-    };
+    console.log(localStorage.getItem("toDo" + e.target.id))
 }
 
 
-window.onload = renderTask();
+
+
+// window.onload = renderTask();
 window.onload = matchTime();
