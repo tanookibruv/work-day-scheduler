@@ -28,11 +28,11 @@ function matchTime() {
         
         if (currentTime !== element.textContent) {
             if (currentTime > element.textContent) {
-                // console.log('ct > tt')
-                element.parentNode.classList.add('past')
+                console.log('ct > tt')
+                element.parentNode.classList.add('future')
             } else {
                 // console.log('ct < tt')
-                element.parentNode.classList.add('future')
+                element.parentNode.classList.add('past')
             }
 
         } else {
@@ -41,6 +41,8 @@ function matchTime() {
                 element.parentNode.classList.add('present')
             }
         }
+        console.log(currentTime, element.textContent);
+
         // console.log(localStorage.getItem(element.parentNode.children[1].id))
 
         element.parentNode.children[1].value = JSON.parse(localStorage.getItem(element.parentNode.children[1].id));
