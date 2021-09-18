@@ -20,7 +20,7 @@ for (var i =0; i < saveEl.length; i++) {
 };
 
 
-// function to compare current time to daily planner
+// function to compare current time to daily planner and fill in textareas from local storage
 function matchTime() {
     var hourEls = document.querySelectorAll('.hour');
     hourEls.forEach(element => {
@@ -28,31 +28,30 @@ function matchTime() {
         
         if (currentTime !== element.textContent) {
             if (currentTime > element.textContent) {
-                console.log('ct > tt')
+                // console.log('ct > tt')
                 element.parentNode.classList.add('past')
             } else {
-                console.log('ct < tt')
+                // console.log('ct < tt')
                 element.parentNode.classList.add('future')
             }
 
         } else {
             if (element.textContent === currentTime) {
-                console.log('time is current')
+                // console.log('time is current')
                 element.parentNode.classList.add('present')
             }
         }
+        // console.log(localStorage.getItem(element.parentNode.children[1].id))
+
+        element.parentNode.children[1].value = JSON.parse(localStorage.getItem(element.parentNode.children[1].id));
     });
 };
 
+// function that saves tasks to local storage.
 function saveTask(e) {
     var toDo = document.getElementById("input-" + e.target.id).value;
-    localStorage.setItem("toDo" + e.target.id, JSON.stringify(toDo));
-
-    console.log(localStorage.getItem("toDo" + e.target.id))
+    localStorage.setItem("input-" + e.target.id, JSON.stringify(toDo));
 }
 
 
-
-
-// window.onload = renderTask();
 window.onload = matchTime();
