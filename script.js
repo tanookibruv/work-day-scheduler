@@ -29,10 +29,10 @@ function matchTime() {
         if (currentTime !== element.textContent) {
             if (currentTime > element.textContent) {
                 // console.log('ct > tt')
-                element.parentNode.classList.add('future')
+                element.parentNode.classList.add('past')
             } else {
                 // console.log('ct < tt')
-                element.parentNode.classList.add('past')
+                element.parentNode.classList.add('future')
             }
 
         } else {
