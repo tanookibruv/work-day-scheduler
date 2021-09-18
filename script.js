@@ -28,7 +28,7 @@ function matchTime() {
         
         if (currentTime !== element.textContent) {
             if (currentTime > element.textContent) {
-                console.log('ct > tt')
+                // console.log('ct > tt')
                 element.parentNode.classList.add('future')
             } else {
                 // console.log('ct < tt')
@@ -41,7 +41,7 @@ function matchTime() {
                 element.parentNode.classList.add('present')
             }
         }
-        console.log(currentTime, element.textContent);
+        // console.log(currentTime, element.textContent);
 
         // console.log(localStorage.getItem(element.parentNode.children[1].id))
 
